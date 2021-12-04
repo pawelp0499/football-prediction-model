@@ -17,6 +17,6 @@ dataset <- dataset[c(2:10, 12:23)] # Keeping only game statistics in dataset
 ```
 
 ```{r}
-write.csv(dataset, "./dataset.csv", row.names=FALSE)
+write.csv(dataset, "./dataset.csv", row.names=FALSE) # Export dataframe to csv file
 ```
 
