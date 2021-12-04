@@ -21,5 +21,11 @@ dataset <- dataset[c(2:10, 12:23)] # Keeping only game statistics in dataset
 write.csv(dataset, "./dataset.csv", row.names=FALSE) # Export dataframe to csv file
 ```
 
+```{r}
+summary(dataset)
+
+library(mice)
+md.pattern(dataset) # checking for missing values in dataset
+```
 
 
