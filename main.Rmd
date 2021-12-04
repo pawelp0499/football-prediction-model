@@ -15,3 +15,8 @@ dataset <- dir("source_data", full.names = T) %>% map_df(read_csv)
 dataset <- dataset[c(2:10, 12:23)] # Keeping only game statistics in dataset
 # What means delete of qualitative variables and statistics about betting from source datasets 
 ```
+
+```{r}
+write.csv(dataset, "./dataset.csv", row.names=FALSE)
+```
+
