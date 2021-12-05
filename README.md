@@ -1,7 +1,24 @@
 # Multinomial-LR-Model-to-predict-football-outcomes
-[In Progress] Multinomial logistic regression model for predicting the outcomes of football matches developed in R
+**[In Progress]** Multinomial logistic regression model for predicting the outcomes of football matches developed in R
 
 **The main goal of project is presenting usability of Machine Learning Model based od Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example).**
 
 🔸 Source CSV files come from the site https://www.football-data.co.uk/
 
+**Description of used variables:**
+
+◾ Date - Match date (dd/mm/yy format)
+◾ HomeTeam - Name of Home Team
+◾ AwayTeam - Name of Away Team
+◾ FTHG and FTAG - Full Time Home and Away Team Goals
+◾ FTR - Full Time Result (H - Home Team Win, D - Draw, A - Away Team Win)
+◾ HTHG and HTAG - Half Time Home and Away Team Goals
+◾ HTR - Half Time Result
+◾ HS and AS - Home and Away Team Shots
+◾ HST and AST - Home and Away Team Shots on Target
+◾ HF and AF - Home and Away Team Fouls Committed
+◾ HC and AC - Home and Away Team Corners
+◾ HY and AY - Home and Away Team Yellow Cards
+◾ HR and AR - Home and Away Team Red Cards
+
+Full description of variables and dataset available at https://www.football-data.co.uk/notes.txt.
