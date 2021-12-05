@@ -75,6 +75,9 @@ heatmap(x = df_corr.cor, col = palette, symm = TRUE)
 
 
 ```{r}
+input_data <- dataset[c(1:3, 6, 9, 12:21)]
+write.csv(input_data, "./input_data.csv", row.names = FALSE)
+
 library(caTools)
 
 set.seed(123)   #  Setting seed to ensure have same random numbers generated
