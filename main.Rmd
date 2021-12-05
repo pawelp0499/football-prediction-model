@@ -68,14 +68,6 @@ df_corr <- df_corr[c(7:16)] # Removing multicollinear variables
 df_corr.cor = cor(df_corr, method = c("pearson"))
 
 heatmap(x = df_corr.cor, col = palette, symm = TRUE)
-
-data_model_input <- df_corr
-```
-
-```{r}
-summary(data_model_input)
-
-write.csv(data_model_input, "./data_model_input.csv", row.names=FALSE) # Export dataframe to csv file
 ```
 
 
@@ -86,9 +78,9 @@ write.csv(data_model_input, "./data_model_input.csv", row.names=FALSE) # Export 
 library(caTools)
 
 set.seed(123)   #  Setting seed to ensure have same random numbers generated
-sample = sample.split(data_model_input,SplitRatio = 0.70) # Splitting the data 70:30 ratio into training and test set
-train = subset(data_model_input,sample == TRUE) 
-test = subset(data_model_input, sample == FALSE)
+sample = sample.split(dataset,SplitRatio = 0.70) # Splitting the data 70:30 ratio into training and test set
+train = subset(dataset,sample == TRUE) 
+test = subset(dataset, sample == FALSE)
 
 
 write.csv(train, "./training/training.csv", row.names = FALSE) # Export training dataframe to csv file
