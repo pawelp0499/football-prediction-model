@@ -76,15 +76,17 @@ heatmap(x = df_corr.cor, col = palette, symm = TRUE)
 
 ```{r}
 input_data <- dataset[c(1:3, 6, 9, 12:21)]
-write.csv(input_data, "./input_data.csv", row.names = FALSE)
+write.csv(input_data, "./input_data.csv", row.names = FALSE) # Creating set without multicollinear variables
+```
 
+
+```{r}
 library(caTools)
 
 set.seed(123)   #  Setting seed to ensure have same random numbers generated
-sample = sample.split(dataset,SplitRatio = 0.70) # Splitting the data 70:30 ratio into training and test set
-train = subset(dataset,sample == TRUE) 
-test = subset(dataset, sample == FALSE)
-
+sample = sample.split(input_data,SplitRatio = 0.70) # Splitting the data 70:30 ratio into training and test set
+train = subset(input_data,sample == TRUE) 
+test = subset(input_data, sample == FALSE)
 
 write.csv(train, "./training/training.csv", row.names = FALSE) # Export training dataframe to csv file
 write.csv(test, "./testing/test.csv", row.names = FALSE) # Export test dataframe to csv file
