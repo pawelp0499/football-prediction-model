@@ -13,20 +13,33 @@ install.packages("caTools")
 ```{r}
 library(tidyverse)
 
-dataset <- dir("source_data", full.names = T) %>% map_df(read_csv)
-dataset <- dataset[c(2:10, 12:23)] # Keeping only game statistics in dataset
+dataset <- dir("source_data", full.names = T) %>% map_df(read_csv) # Import of source data files about 2011/2012 - 2020/2021 seasons
+
+```
+
+###Processing and Exploring Data
+
+```{r}
+# Processing and Exploring Data
+
+dataset <- dataset[c(2:10, 12:23)] # Keep only game statistics in dataset
 # What means delete of qualitative variables and statistics about betting from source datasets 
 ```
 
+
 ```{r}
-write.csv(dataset, "./dataset.csv", row.names=FALSE) # Export dataframe to csv file
+library(mice)
+md.pattern(dataset) # Checking for missing values in dataset
+
+dataset <- na.omit(dataset) # Removing empty row
+
 ```
+
 
 ```{r}
 summary(dataset)
 
-library(mice)
-md.pattern(dataset) # Checking for missing values in dataset
+write.csv(dataset, "./dataset.csv", row.names=FALSE) # Export dataframe to csv file
 ```
 
 
