@@ -91,4 +91,6 @@ train = subset(dataset,sample == TRUE)
 test = subset(dataset, sample == FALSE)
 
 
+write.csv(train, "./training/training.csv", row.names = FALSE) # Export training dataframe to csv file
+write.csv(test, "./testing/test.csv", row.names = FALSE) # Export test dataframe to csv file
 ```
