@@ -9,6 +9,7 @@ install.packages("mice")
 install.packages("caTools")
 ```
 
+# Source data import
 
 ```{r}
 library(tidyverse)
@@ -17,11 +18,9 @@ dataset <- dir("source_data", full.names = T) %>% map_df(read_csv) # Import of s
 
 ```
 
-###Processing and Exploring Data
-
-```{r}
 # Processing and Exploring Data
 
+```{r}
 dataset <- dataset[c(2:10, 12:23)] # Keep only game statistics in dataset
 # What means delete of qualitative variables and statistics about betting from source datasets 
 ```
