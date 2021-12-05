@@ -1,7 +1,6 @@
 ---
 author: "Paweł Pechta"
 title: "Multinomial LR Model for predicting the outcomes of football matches"
-output: rmarkdown::github_document
 ---
 
 ```{r}
