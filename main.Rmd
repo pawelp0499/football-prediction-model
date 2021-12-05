@@ -35,6 +35,6 @@ library(caTools)
 
 set.seed(123)   #  setting seed to ensure have same random numbers generated
 sample = sample.split(dataset,SplitRatio = 0.70) # splitting the data 70:30 ratio into training and test set
-train=subset(dataset,sample ==TRUE) 
-test=subset(dataset, sample==FALSE)
+train = subset(dataset,sample == TRUE) 
+test = subset(dataset, sample == FALSE)
 ```
