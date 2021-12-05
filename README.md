@@ -8,17 +8,29 @@
 **Description of used variables:**
 
 ◾ Date - Match date (dd/mm/yy format)
+
 ◾ HomeTeam - Name of Home Team
+
 ◾ AwayTeam - Name of Away Team
+
 ◾ FTHG and FTAG - Full Time Home and Away Team Goals
+
 ◾ FTR - Full Time Result (H - Home Team Win, D - Draw, A - Away Team Win)
+
 ◾ HTHG and HTAG - Half Time Home and Away Team Goals
+
 ◾ HTR - Half Time Result
+
 ◾ HS and AS - Home and Away Team Shots
+
 ◾ HST and AST - Home and Away Team Shots on Target
+
 ◾ HF and AF - Home and Away Team Fouls Committed
+
 ◾ HC and AC - Home and Away Team Corners
+
 ◾ HY and AY - Home and Away Team Yellow Cards
+
 ◾ HR and AR - Home and Away Team Red Cards
 
 Full description of variables and dataset available at https://www.football-data.co.uk/notes.txt.
