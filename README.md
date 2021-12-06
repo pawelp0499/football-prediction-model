@@ -33,7 +33,7 @@
 
 ◾ HR and AR - Home and Away Team Red Cards
 
-Full description of variables and dataset available at https://www.football-data.co.uk/notes.txt.
+Full description of variables and dataset available at [Football-Data Notes](https://www.football-data.co.uk/notes.txt).
 
 
 MIT License
