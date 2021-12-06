@@ -1,7 +1,8 @@
 ---
 author: "Paweł Pechta"
 title: "Multinomial LR Model for predicting the outcomes of football matches"
-purpose: "This script presents the process of data exploring and cleansing,                                                    model building and evaluation and practical use to predict                                                            the results of soccer matches based on the English league."
+purpose: "This script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the results of football matches based on the English Premier League."
+Date script last modified: "Thu Dec 6 23:05:48 2021"
 ---
 
 ```{r}
@@ -15,76 +16,93 @@ install.packages("corrplot")
 # Source data import to create dataset
 
 ```{r}
+# package dependencies
 library(tidyverse)
 
 dataset <- dir("source_data", full.names = T) %>% map_df(read_csv)
-# Import of source data files about 2011/2012 - 2020/2021 seasons
+# Import csv about 2011/2012 - 2020/2021 seasons from source_data catalog
+# dir() returns a character vector of file names within source_data directory
+# map_df() row-bind each element of output together
+# read_csv() function as map_df parameter used to read data from csv file
 ```
 
 
 # Processing and Exploring Data (limiting number of variables and removing NA)
 
 ```{r}
-dataset <- dataset[c(2:10, 12:23)] # Keep only match  statistics in dataset
+dataset <- dataset[c(2:10, 12:23)] # Removing unused variables by indexes
 # What means delete of qualitative variables and statistics about betting
+# and keeping only match statistics in dataset
 ```
 
 ```{r}
+# Start of cleansing dataset
+
+# package dependencies
 library(mice)
-md.pattern(dataset) # Checking for missing values in dataset
 
-dataset <- na.omit(dataset) # Removing empty row
+md.pattern(dataset) # Checking for missing values in dataset
+dataset <- na.omit(dataset) # Removing 1 full-empty row
 ```
 
 ```{r}
-summary(dataset)
+summary(dataset) # Display summary of dataset after cleansing procedure
 
 
-write.csv(dataset, "./dataset.csv", row.names=FALSE)
+write.csv(dataset, "./dataset.csv", row.names=FALSE) # Export dataframe to csv
+# write_csv() function to save values to CSV file in repository
+# row.names argument as FALSE
 ```
 
 
 # Input Data preparation (removing multicollinear variables)
 
 ```{r}
-# Removing multicollinear variables as an assumption of logistic regression
+# Preparing data to Correlation Matrix creating
 
-str(dataset)
+str(dataset) # Display structure of dataset
 
-df_corr <- dataset[,sapply(dataset, is.numeric)] # Leaving only numeric type variables 
+df_corr <- dataset[,sapply(dataset, is.numeric)] # Keeping only num variables 
 
-df_corr.cor = cor(df_corr, method = c("pearson")) # Creating correlation matrix
+df_corr.cor = cor(df_corr, method = c("pearson")) # Creating Correlation Matrix
 
+# package dependencies
 library(corrplot)
 
 palette = colorRampPalette(c("green", "white", "red")) (20)
-heatmap(x = df_corr.cor, col = palette, symm = TRUE) # Visualizing the correlation matrix
+heatmap(x = df_corr.cor, col = palette, symm = TRUE) # Visualizing the matrix
+# heatmap(), df_corr.cor source matrix
 ```
 
 ```{r}
-df_corr <- df_corr[c(7:16)] # Removing multicollinear variables 
+df_corr <- df_corr[c(7:16)] # Removing multicollinear variables
 
-df_corr.cor = cor(df_corr, method = c("pearson"))
+df_corr.cor = cor(df_corr, method = c("pearson")) 
 
-heatmap(x = df_corr.cor, col = palette, symm = TRUE)
+heatmap(x = df_corr.cor, col = palette, symm = TRUE) # Compare matrix to base
 ```
 
 ```{r}
-input_data <- dataset[c(1:3, 6, 9, 12:21)]
-write.csv(input_data, "./input_data.csv", row.names = FALSE) # Creating set without multicollinear variables
+input_data <- dataset[c(1:3, 6, 9, 12:21)] 
+write.csv(input_data, "./input_data.csv", row.names = FALSE) 
+# Keeping no-multicollinear independent variables in dataset, restoring factors
+# Saving it as CSV by indexes
+
 ```
 
 
 # Splitting data into training and testing datasets to build and evaluate model
 
 ```{r}
+# package dependencies
 library(caTools)
 
+# 70% of data for building LR model, 30% for evaluating it
 set.seed(123)   #  Setting seed to ensure have same random numbers generated
-sample = sample.split(input_data,SplitRatio = 0.70) # Splitting the data 70:30 ratio into training and test set
-train = subset(input_data,sample == TRUE) 
-test = subset(input_data, sample == FALSE)
+sample = sample.split(input_data,SplitRatio = 0.70) # Splitting data 70:30 ratio
+train = subset(input_data,sample == TRUE) # into training set
+test = subset(input_data, sample == FALSE) # into test set
 
-write.csv(train, "./training/training.csv", row.names = FALSE) # Export training dataframe to csv file
-write.csv(test, "./testing/test.csv", row.names = FALSE) # Export test dataframe to csv file
+write.csv(train, "./training/training.csv", row.names = FALSE) # Export training 
+write.csv(test, "./testing/test.csv", row.names = FALSE) # Export testing
 ```
