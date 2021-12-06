@@ -1,6 +1,7 @@
 ---
 author: "Paweł Pechta"
 title: "Multinomial LR Model for predicting the outcomes of football matches"
+purpose: "This script presents the process of data exploring and cleansing,                                                    model building and evaluation and practical use to predict                                                            the results of soccer matches based on the English league."
 ---
 
 ```{r}
@@ -11,22 +12,21 @@ install.packages("corrplot")
 ```
 
 
-# Source data import
-
+# Source data import to create dataset
 
 ```{r}
 library(tidyverse)
 
-dataset <- dir("source_data", full.names = T) %>% map_df(read_csv) # Import of source data files about 2011/2012 - 2020/2021 seasons
+dataset <- dir("source_data", full.names = T) %>% map_df(read_csv)
+# Import of source data files about 2011/2012 - 2020/2021 seasons
 ```
 
 
-# Processing and Exploring Data
-
+# Processing and Exploring Data (limiting number of variables and removing NA)
 
 ```{r}
-dataset <- dataset[c(2:10, 12:23)] # Keep only game statistics in dataset
-# What means delete of qualitative variables and statistics about betting from source datasets 
+dataset <- dataset[c(2:10, 12:23)] # Keep only match  statistics in dataset
+# What means delete of qualitative variables and statistics about betting
 ```
 
 ```{r}
@@ -44,8 +44,7 @@ write.csv(dataset, "./dataset.csv", row.names=FALSE)
 ```
 
 
-# Input Data preparation
-
+# Input Data preparation (removing multicollinear variables)
 
 ```{r}
 # Removing multicollinear variables as an assumption of logistic regression
@@ -70,15 +69,13 @@ df_corr.cor = cor(df_corr, method = c("pearson"))
 heatmap(x = df_corr.cor, col = palette, symm = TRUE)
 ```
 
-
-# Splitting the data into training and test datasets
-
-
 ```{r}
 input_data <- dataset[c(1:3, 6, 9, 12:21)]
 write.csv(input_data, "./input_data.csv", row.names = FALSE) # Creating set without multicollinear variables
 ```
 
+
+# Splitting data into training and testing datasets to build and evaluate model
 
 ```{r}
 library(caTools)
