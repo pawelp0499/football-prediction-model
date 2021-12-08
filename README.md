@@ -1,7 +1,7 @@
 # Multinomial-LR-Model-to-predict-football-outcomes
 **[In Progress]** Multinomial logistic regression model for predicting the outcomes of football matches developed in R
 
-**The main goal of project is presenting usability of Machine Learning Model based od Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example).**
+**The main goal of project is presenting usability of Machine Learning Model based on Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example). Script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the outcomes of future football matches.**
 
 🔸 Source CSV files come from the site https://www.football-data.co.uk/
 
