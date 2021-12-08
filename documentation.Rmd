@@ -1,7 +1,7 @@
 ---
 author: "Paweł Pechta"
 title: "Multinomial LR Model for predicting the outcomes of football matches"
-purpose: "This script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the results of football matches based on the English Premier League."
+purpose: "This script presents  process of building and using Machine Learning model to predict football matches outcomes" 
 Date script last modified: "Thu Dec 6 23:05:48 2021"
 ---
 
