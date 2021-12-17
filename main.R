@@ -51,7 +51,6 @@ df_corr.cor = cor(df_corr, method = c("pearson"))
 heatmap(x = df_corr.cor, col = palette, symm = TRUE)
 
 input_data <- dataset[c(1:3, 6, 9, 12:21)]
-write.csv(input_data, "./input_data.csv", row.names = FALSE)
 
 
 # Splitting data into training and testing datasets to build and evaluate model

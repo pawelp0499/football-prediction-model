@@ -84,10 +84,7 @@ heatmap(x = df_corr.cor, col = palette, symm = TRUE) # Compare matrix to base
 
 ```{r}
 input_data <- dataset[c(1:3, 6, 9, 12:21)] 
-write.csv(input_data, "./input_data.csv", row.names = FALSE) 
-# Keeping no-multicollinear independent variables in dataset, restoring factors
-# Saving it as CSV by indexes
-
+# Keeping no-multicollinear independent variables in dataframe,restoring factors
 ```
 
 
