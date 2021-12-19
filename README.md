@@ -3,7 +3,7 @@
 
 ### Purpose of Project
 
-**The main goal of project is presenting usability of Machine Learning Model based on Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example). Script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the outcomes of future football matches.**
+**The main goal of this project is to present usability and build Machine Learning Model based on Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example for the analysis). Script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the outcomes of future football matches.**
 
 🔸 Source CSV files come from the site https://www.football-data.co.uk/
 
