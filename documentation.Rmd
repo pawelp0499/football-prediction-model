@@ -2,7 +2,7 @@
 author: "Paweł Pechta"
 title: "Multinomial LR Model for predicting the outcomes of football matches"
 purpose: "This script presents  process of building and using Machine Learning model to predict football matches outcomes" 
-Date script last modified: "Thu Dec 6 23:05:48 2021"
+Date script last modified: "Wed Dec 29 18:00:48 2021"
 ---
 
 ```{r}
@@ -20,7 +20,7 @@ install.packages("corrplot")
 library(tidyverse)
 
 dataset <- dir("source_data", full.names = T) %>% map_df(read_csv)
-# Import csv about 2011/2012 - 2020/2021 seasons from source_data catalog
+# Import csv about 2011/2012 - 2021/2022 seasons from source_data catalog
 # dir() returns a character vector of file names within source_data directory
 # map_df() row-bind each element of output together
 # read_csv() function as map_df parameter used to read data from csv file
