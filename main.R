@@ -65,35 +65,34 @@ test = subset(input_data, sample == FALSE)
 write.csv(train, "./training/training.csv", row.names = FALSE)
 write.csv(test, "./testing/test.csv", row.names = FALSE)
 
-train1 <- train
-
-train1$FTR <- relevel(factor(train1$FTR), ref = "D")
-
 
 # Building and Comparising Predictive Models (by AIC value)
 
+train$FTR <- relevel(factor(train$FTR), ref = "D")
 require(nnet)
 
 # with all variables
 
 multinom.model_1 <- multinom(FTR ~HST + AST + HF + AF + HC + AC + HY + AY
-                             + HR + AR +1, data = train1)
-summary(multinom.model_1)
+                             + HR + AR +1, data = train)
+summary(multinom.model_1)  # coefficients and standard errors
 
-# only with relevant variables
+summary <- summary(multinom.model_1)$coefficients/summary(multinom.model_1)$standard.errors
+p <- (1 - pnorm(abs(summary), 0, 1)) * 2
+head(p) # p-values
+
+# with only relevant variables
 
 multinom.model_2 <- multinom(FTR ~AST + HST + AF + HC + AC + HY + HR + AR +1,
-                             data = train1)
+                             data = train)
 summary(multinom.model_2)
 
 # model with only relevant variables has lower AIC value so should be better
 
-summary(multinom.model_2) # coefficients and standard errors
-
-summary <- summary(multinom.model_2)$coefficients/summary(multinom.fit)$standard.errors
+summary <- summary(multinom.model_2)$coefficients/summary(multinom.model_2)$standard.errors
 p <- (1 - pnorm(abs(summary), 0, 1)) * 2
 head(p) # p-values
 
 
-# 'HR' variable is relevant only for 'A' category of dependent variable,
+# 'HR' variables are relevant only for 'A' category of dependent variable,
 # so can either be left or deleted from the model
