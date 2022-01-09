@@ -13,7 +13,7 @@ install.packages("styler")
 # Source data import to create dataset
 
 library(tidyverse)
-dataset <- dir("source_data", full.names = T) %>% map_df(read_csv)
+dataset <- dir("data", full.names = T) %>% map_df(read_csv)
 
 
 
