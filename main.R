@@ -107,5 +107,19 @@ names(output)[4] <- "Actual"
 
 write.csv(output, "./test/output.csv", row.names = FALSE)
 
-ctable <- table(output$Actual, output$Predicted)
-round((sum(diag(ctable))/sum(ctable))*100,2)
+# Evaluating the Model
+
+install.packages('e1071', dependencies = TRUE)
+
+observations <- factor(output$Actual,
+                        levels = c("H", "A", "D"))
+
+predicted <- factor(output$Predicted,
+                       levels = c("H", "A", "D"))
+
+conf <- table(predicted, observations)
+
+install.packages('caret')
+library(caret)
+f.conf <- confusionMatrix(conf)
+print(f.conf) # Confusion Matrix
