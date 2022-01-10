@@ -7,7 +7,6 @@ install.packages("tidyverse")
 install.packages("mice")
 install.packages("caTools")
 install.packages("corrplot")
-install.packages("styler")
 
 
 # Source data import to create dataset
@@ -63,8 +62,7 @@ train = subset(input_data,sample == TRUE)
 test = subset(input_data, sample == FALSE)
 
 write.csv(train, "./training/training.csv", row.names = FALSE)
-write.csv(test, "./testing/test.csv", row.names = FALSE)
-
+write.csv(test, "./test/test.csv", row.names = FALSE)
 
 # Building and Comparising Predictive Models (by AIC value)
 
@@ -93,6 +91,21 @@ summary <- summary(multinom.model_2)$coefficients/summary(multinom.model_2)$stan
 p <- (1 - pnorm(abs(summary), 0, 1)) * 2
 head(p) # p-values
 
-
 # 'HR' variables are relevant only for 'A' category of dependent variable,
 # so can either be left or deleted from the model
+
+exp(coef(multinom.model_2)) # odds ratio
+
+multinom.model <- multinom.model_2
+
+# Predicting on Test Data
+
+output <- test
+output$Predicted <- predict(multinom.model, newdata = output, "class")
+output <- output[c(1:4, 16)]
+names(output)[4] <- "Actual"
+
+write.csv(output, "./test/output.csv", row.names = FALSE)
+
+ctable <- table(output$Actual, output$Predicted)
+round((sum(diag(ctable))/sum(ctable))*100,2)
