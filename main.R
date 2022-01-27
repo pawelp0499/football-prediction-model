@@ -57,7 +57,7 @@ input_data <- dataset[c(1:3, 6, 9, 12:21)]
 library(caTools)
 
 set.seed(123)
-sample = sample.split(input_data,SplitRatio = 0.70)
+sample = sample.split(input_data, SplitRatio = 0.70)
 train = subset(input_data,sample == TRUE) 
 test = subset(input_data, sample == FALSE)
 
@@ -96,7 +96,7 @@ head(p) # p-values
 
 exp(coef(multinom.model_2)) # odds ratio
 
-multinom.model <- multinom.model_2
+multinom.model <- multinom.model_2 # rename model
 
 # Predicting on Test Data
 
@@ -123,3 +123,4 @@ install.packages('caret')
 library(caret)
 f.conf <- confusionMatrix(conf)
 print(f.conf) # Confusion Matrix
+
