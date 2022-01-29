@@ -119,8 +119,28 @@ predicted <- factor(output$Predicted,
 
 conf <- table(predicted, observations)
 
-install.packages('caret')
-library(caret)
-f.conf <- confusionMatrix(conf)
-print(f.conf) # Confusion Matrix
 
+library(caret) 
+f.conf <- confusionMatrix(conf)
+
+
+install.packages('yardstick')
+library(yardstick)
+library(ggplot2)
+
+set.seed(123)
+mat_conf <- data.frame(
+  FTR = sample(0:1,1325, replace = T),
+  predicted = sample(0:1,1325, replace = T)
+)
+mat_conf$FTR <- observations
+mat_conf$predicted <- predicted
+
+cm <- conf_mat(mat_conf, FTR, predicted)
+
+# Confusion matrix  to assess the quality of classification on a test set
+
+autoplot(cm, type = "heatmap") +
+  scale_fill_gradient(low = "aquamarine1", high = "firebrick1")
+
+print(f.conf)
