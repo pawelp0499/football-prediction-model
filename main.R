@@ -141,6 +141,17 @@ cm <- conf_mat(mat_conf, FTR, predicted)
 # Confusion matrix  to assess the quality of classification on a test set
 
 autoplot(cm, type = "heatmap") +
-  scale_fill_gradient(low = "aquamarine1", high = "firebrick1")
+  scale_fill_gradient(low = "firebrick1", high = "aquamarine1")
 
 print(f.conf)
+
+# Future matches prediction (an example of the practical use of the model)
+
+library("readxl")
+average_stats <- read_excel("./future_matches_prediction/average_stats.xlsx")
+
+predictions <- average_stats
+predictions$Prediction <- predict(multinom.model, newdata = predictions,
+                                  "class")
+predictions <- predictions[c(1:4, 13)]
+write.csv(predictions, "./future_matches_prediction/predictions.csv", row.names = FALSE)
