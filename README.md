@@ -38,6 +38,9 @@ Source data includes statistics since the 2011/2012 season to the mid-2021/2022 
 
 Full description of variables and dataset available at [Football-Data Notes](https://www.football-data.co.uk/notes.txt).
 
+<p align="center">
+  <img src="https://i.postimg.cc/qR2Qhn30/Confusion-Matrix.png" />
+</p>
 
 MIT License
 
