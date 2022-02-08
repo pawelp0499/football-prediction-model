@@ -150,3 +150,94 @@ head(p) # p-values
 # 'HR' variables are relevant only for 'A' category of dependent variable,
 # so can either be left or deleted from the model
 ```
+
+```{r}
+exp(coef(multinom.model_2)) # odds ratio
+# model interpretations available in ./training/details.md
+```
+
+```{r}
+multinom.model <- multinom.model_2 # rename model
+```
+
+```{r}
+# Predicting on Test Data
+
+output <- test
+
+# Prediction using our model and save as "Predicted" variable
+# predict() function: a factor of classifications based on H/A/D levels
+
+output$Predicted <- predict(multinom.model, newdata = output, "class")
+output <- output[c(1:4, 16)]
+names(output)[4] <- "Actual" # rename variable "Full Time Result" to "Actual"
+
+write.csv(output, "./test/output.csv", row.names = FALSE) # save as csv file
+```
+
+```{r}
+# Evaluating the Model
+
+# Building Confusion Matrix
+
+install.packages('e1071', dependencies = TRUE)
+
+observations <- factor(output$Actual,
+                        levels = c("H", "A", "D"))
+
+predicted <- factor(output$Predicted,
+                       levels = c("H", "A", "D"))
+
+conf <- table(predicted, observations)
+
+
+library(caret) 
+f.conf <- confusionMatrix(conf)
+
+# package dependencies
+
+install.packages('yardstick')
+library(yardstick)
+library(ggplot2)
+
+# Size of sample is equal to dataset size
+
+set.seed(123)
+mat_conf <- data.frame(
+  FTR = sample(0:1,1325, replace = T),
+  predicted = sample(0:1,1325, replace = T)
+)
+mat_conf$FTR <- observations
+mat_conf$predicted <- predicted
+
+cm <- conf_mat(mat_conf, FTR, predicted)
+
+# Confusion matrix  to assess the quality of classification on a test set
+# Visualize confusion matrix
+
+autoplot(cm, type = "heatmap") +
+  scale_fill_gradient(low = "firebrick1", high = "aquamarine1")
+
+print(f.conf)
+
+# assessment of the quality of prediction available in ./test/evaluation.md
+```
+
+
+```{r}
+
+# Future matches prediction (an example of the practical use of the model)
+
+library("readxl")
+average_stats <- read_excel("./future_matches_prediction/average_stats.xlsx")
+
+predictions <- average_stats
+predictions$Prediction <- predict(multinom.model, newdata = predictions,
+                                  "class")
+predictions <- predictions[c(1:4, 13)]
+write.csv(predictions, "./future_matches_prediction/predictions.csv", row.names = FALSE)
+
+# more details in "future_matches_prediction" catalog
+
+```
+
