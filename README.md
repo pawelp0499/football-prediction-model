@@ -1,5 +1,5 @@
 # Multinomial Logistic Regression Model to predict football outcomes
-**[In Progress]** Multinomial logistic regression model for predicting the outcomes of football matches developed in R
+Multinomial logistic regression model for predicting the outcomes of football matches developed in R
 
 ### Purpose of Project
 
@@ -38,9 +38,35 @@ Source data includes statistics since the 2011/2012 season to the mid-2021/2022 
 
 Full description of variables and dataset available at [Football-Data Notes](https://www.football-data.co.uk/notes.txt).
 
+### Minimal Code to build Model
+
+```
+train <- read.csv("./training/training.csv")
+
+test <- read.csv("./test/test.csv")
+
+multinom.model <- multinom(FTR ~AST + HST + AF + HC + AC + HY + HR + AR +1,
+                             data = train)       
+```
+
+### Prediction Quality
+**Model Accuracy:** 0.5955
 <p align="center">
   <img src="https://i.postimg.cc/qR2Qhn30/Confusion-Matrix.png" />
 </p>
+
+### Pros and Cons of Model
+
+️
+➕ High sensitivity of Home Team victory result prediction
+
+➕ High specificity of Draw result prediction
+
+➕ Lot possibilities to improve prediction efficiency for example, by extending the model with new variables
+
+➖ Low sensitivity of Draw result prediction
+
+➖ Medium level of overall accuracy
 
 MIT License
 
