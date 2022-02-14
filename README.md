@@ -42,11 +42,12 @@ Full description of variables and dataset available at [Football-Data Notes](htt
 
 ```
 train <- read.csv("./training/training.csv")
+train$FTR <- relevel(factor(train$FTR), ref = "D")
 
-test <- read.csv("./test/test.csv")
+require(nnet)
+multinom.model <- multinom(FTR ~ AST + HST + AF + HC + AC + HY + HR + AR + 1, data = train) 
 
-multinom.model <- multinom(FTR ~AST + HST + AF + HC + AC + HY + HR + AR +1,
-                             data = train)       
+summary(multinom.model)      
 ```
 
 ### Prediction Quality
@@ -57,7 +58,6 @@ multinom.model <- multinom(FTR ~AST + HST + AF + HC + AC + HY + HR + AR +1,
 
 ### Pros and Cons of Model
 
-️
 ➕ High sensitivity of Home Team victory result prediction
 
 ➕ High specificity of Draw result prediction
@@ -68,6 +68,11 @@ multinom.model <- multinom(FTR ~AST + HST + AF + HC + AC + HY + HR + AR +1,
 
 ➖ Medium level of overall accuracy
 
-MIT License
+
+### Model applying
+
+◾ Premier League 2021/2022 Matches Results Prediction **[Outcome](https://github.com/pawelp0499/Multinomial-LR-Model-to-predict-football-outcomes/blob/main/future_matches_prediction/predictions.csv)**
+
+◾ Premier League 2021/2022 Matches Results Prediction **[Details](https://github.com/pawelp0499/Multinomial-LR-Model-to-predict-football-outcomes/blob/main/future_matches_prediction/README.md)**
 
 Copyright (c) 2021 Paweł Pechta
