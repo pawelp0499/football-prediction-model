@@ -1,5 +1,4 @@
 # Multinomial Logistic Regression Model to predict football outcomes
-Multinomial logistic regression model for predicting the outcomes of football matches developed in R
 
 ### Purpose of Project
 
