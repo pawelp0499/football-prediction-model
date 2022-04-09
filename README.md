@@ -1,5 +1,11 @@
 # Multinomial Logistic Regression Model to predict football outcomes
 
+<img src="https://img.shields.io/github/languages/top/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/github/last-commit/pawelp0499/football-prediction-model?style=plastic" /> <img src="https://img.shields.io/badge/total%20commits-88-blueviolet" />
+
+
+<p align="center"> <img src="https://cdn-icons-png.flaticon.com/512/2534/2534371.png" width="150" height="150" /> </p>
+
+
 ### Purpose of Project
 
 **The main goal of this project is to present usability and build Machine Learning Model based on Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example for the analysis). Script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the outcomes of future football matches. 
@@ -67,6 +73,7 @@ summary(multinom.model)
 
 ➖ Medium level of overall accuracy
 
+<p align="center"> <img src="https://cdn-icons.flaticon.com/png/512/3425/premium/3425945.png?token=exp=1649536774~hmac=92ce4ce347d71da93327013eb11dea57" width="150" height="150" /> </p>
 
 ### Model applying
 
@@ -74,4 +81,13 @@ summary(multinom.model)
 
 ◾ Premier League 2021/2022 Matches Results Prediction **[Details](https://github.com/pawelp0499/Multinomial-LR-Model-to-predict-football-outcomes/blob/main/future_matches_prediction/README.md)**
 
+### Icons
+
+<a href="https://www.flaticon.com/free-icons/forecasting" title="forecasting icons">Forecasting icons created by Flat Icons - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/bet" title="Bet icons">Bet icons created by max.icons - Flaticon</a>
+
+
 Copyright (c) 2021 Paweł Pechta
+
+
