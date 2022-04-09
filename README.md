@@ -1,6 +1,6 @@
 # Multinomial Logistic Regression Model to predict football outcomes
 
-<img src="https://img.shields.io/github/languages/top/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/github/last-commit/pawelp0499/football-prediction-model?style=plastic" /> <img src="https://img.shields.io/badge/total%20commits-88-blueviolet" />
+<img src="https://img.shields.io/github/languages/top/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/github/last-commit/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/badge/total%20commits-89-blueviolet" />
 
 
 <p align="center"> <img src="https://cdn-icons-png.flaticon.com/512/2534/2534371.png" width="150" height="150" /> </p>
