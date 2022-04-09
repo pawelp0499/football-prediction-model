@@ -1,19 +1,37 @@
 # Multinomial Logistic Regression Model to predict football outcomes
 
-<img src="https://img.shields.io/github/languages/top/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/github/last-commit/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/badge/total%20commits-89-blueviolet" />
+<img src="https://img.shields.io/github/languages/top/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/github/last-commit/pawelp0499/football-prediction-model" /> <img src="https://img.shields.io/badge/total%20commits-90-blueviolet" />
 
 
 <p align="center"> <img src="https://cdn-icons-png.flaticon.com/512/2534/2534371.png" width="150" height="150" /> </p>
 
 
-### Purpose of Project
+## Purpose of Project
 
 **The main goal of this project is to present usability and build Machine Learning Model based on Multinomial Logistic Regression for predicting the results of football matches (the English Premier League was used as an example for the analysis). Script presents the process of data exploring and cleansing, model building and evaluation and practical use to predict the outcomes of future football matches. 
 Source data includes statistics since the 2011/2012 season to the mid-2021/2022 season.**
 
 🔸 Source CSV files come from the site https://www.football-data.co.uk/
 
-### Description of used variables
+## Built with
+
+◾ tidyverse
+
+◾ mice
+
+◾ caTools
+
+◾ nnet
+
+◾ corrplot
+
+◾ e1071
+
+◾ yardstick
+
+◾ ggplot2
+
+## Description of used variables
 
 ◾ Date - Match date (dd/mm/yy format)
 
@@ -43,7 +61,7 @@ Source data includes statistics since the 2011/2012 season to the mid-2021/2022 
 
 Full description of variables and dataset available at [Football-Data Notes](https://www.football-data.co.uk/notes.txt).
 
-### Minimal Code to build Model
+## Minimal Code to build Model
 
 ```
 train <- read.csv("./training/training.csv")
@@ -55,13 +73,13 @@ multinom.model <- multinom(FTR ~ AST + HST + AF + HC + AC + HY + HR + AR + 1, da
 summary(multinom.model)      
 ```
 
-### Prediction Quality
+## Prediction Quality
 **Model Accuracy:** 0.5955
 <p align="center">
   <img src="https://i.postimg.cc/qR2Qhn30/Confusion-Matrix.png" />
 </p>
 
-### Pros and Cons of Model
+## Pros and Cons of solution
 
 ➕ High sensitivity of Home Team victory result prediction
 
@@ -75,17 +93,17 @@ summary(multinom.model)
 
 <p align="center"> <img src="https://cdn-icons.flaticon.com/png/512/3425/premium/3425945.png?token=exp=1649536774~hmac=92ce4ce347d71da93327013eb11dea57" width="150" height="150" /> </p>
 
-### Model applying
+## Model applying
 
 ◾ Premier League 2021/2022 Matches Results Prediction **[Outcome](https://github.com/pawelp0499/Multinomial-LR-Model-to-predict-football-outcomes/blob/main/future_matches_prediction/predictions.csv)**
 
 ◾ Premier League 2021/2022 Matches Results Prediction **[Details](https://github.com/pawelp0499/Multinomial-LR-Model-to-predict-football-outcomes/blob/main/future_matches_prediction/README.md)**
 
-### Icons
+## Icons
 
-<a href="https://www.flaticon.com/free-icons/forecasting" title="forecasting icons">Forecasting icons created by Flat Icons - Flaticon</a>
+◾ <a href="https://www.flaticon.com/free-icons/forecasting" title="forecasting icons">Forecasting icons created by Flat Icons - Flaticon</a>
 
-<a href="https://www.flaticon.com/free-icons/bet" title="Bet icons">Bet icons created by max.icons - Flaticon</a>
+◾ <a href="https://www.flaticon.com/free-icons/bet" title="Bet icons">Bet icons created by max.icons - Flaticon</a>
 
 
 Copyright (c) 2021 Paweł Pechta
